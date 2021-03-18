@@ -12,7 +12,7 @@ const App = () => {
         <Player />
         <NextSongs />
       </section>
-      <section className="flex flex-col bg-yellow-200">
+      <section className="flex flex-col bg-gray-100">
         <Searchbar />
         <Results />
       </section>
