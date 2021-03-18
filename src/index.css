@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.grid-template-1fr-1fr-2fr {
+    grid-template-columns: 21% 22.4% 56.6%;
+}
