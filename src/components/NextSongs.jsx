@@ -1,8 +1,8 @@
 const NextSongs = () => {
   return (
-    <div>
-      <p>Esto es NextSongs</p>
-    </div>
+    <article className="border-t-8">
+      <h2 className="px-8 py-4">Siguiente Canción</h2>
+    </article>
   );
 };
 

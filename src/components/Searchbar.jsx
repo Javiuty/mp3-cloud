@@ -3,9 +3,11 @@ import axios from "axios";
 
 const SearchBar = ({ setCancionesYoutube }) => {
   const [cancion, setCancion] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [numberOfSongShowed, setNumberOfSongsShowed] = useState(6);
 
   const fetchingSongs = async () => {
-    const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${cancion}&maxResults=50&key=${process.env.REACT_APP_YOUTUBE_KEY}`;
+    const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${cancion}&maxResults=${numberOfSongShowed}&key=${process.env.REACT_APP_YOUTUBE_KEY}`;
 
     const resultado = await axios.get(url);
 

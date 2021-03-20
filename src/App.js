@@ -17,7 +17,7 @@ const App = () => {
       </section>
       <section className="flex flex-col bg-gray-100">
         <Searchbar setCancionesYoutube={setCancionesYoutube} />
-        <Results />
+        <Results cancionesYoutube={cancionesYoutube} />
       </section>
     </main>
   );

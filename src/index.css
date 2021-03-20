@@ -3,5 +3,17 @@
 @tailwind utilities;
 
 .grid-template-1fr-1fr-2fr {
-    grid-template-columns: 21% 22.4% 56.6%;
+  grid-template-columns: 21% 22.4% 56.6%;
+}
+
+.grid-template-result {
+  grid-template-columns: 1fr 8fr 1fr;
+}
+
+.-left-1px {
+  left: -1px;
+}
+
+.min-h-80 {
+  min-height: 80%;
 }
