@@ -8,7 +8,7 @@ const App = () => {
   return (
     <main className="grid grid-template-1fr-1fr-2fr">
       <Sidebar />
-      <section className="flex flex-col bg-blue-300">
+      <section className="flex flex-col bg-white">
         <Player />
         <NextSongs />
       </section>
