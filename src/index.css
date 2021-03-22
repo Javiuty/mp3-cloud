@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+a,
+button {
+  border: none !important;
+  outline: none !important;
+}
+
 .grid-template-1fr-1fr-2fr {
   grid-template-columns: 21% 22.4% 56.6%;
 }
@@ -16,4 +22,8 @@
 
 .min-h-80 {
   min-height: 80%;
+}
+
+.color-primary-bg {
+  background-color: #00bcf0;
 }
