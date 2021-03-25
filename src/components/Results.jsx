@@ -1,4 +1,22 @@
+import Result from "./Result";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const Results = () => {
+  const [canciones, setCanciones] = useState([]);
+
+  const fetchSongs = async () => {
+    const url = "http://localhost:8888/.netlify/functions/getSongs";
+
+    const results = await axios.get(url);
+
+    setCanciones(results.data);
+  };
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
+
   return (
     <section className="bg-white min-h-80 m-4 mt-14 relative border-t border-r border-l border-b">
       <div className="flex">
@@ -18,9 +36,9 @@ const Results = () => {
         <span className="cursor-pointer">Reproduciones</span> |{" "}
         <span className="cursor-pointer">Fecha de Creación</span>{" "}
       </h3> */}
-      {/* {cancionesYoutube.map((cancion, index) => (
+      {canciones.map((cancion, index) => (
         <Result key={index} cancion={cancion} />
-      ))} */}
+      ))}
     </section>
   );
 };

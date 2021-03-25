@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SearchBar = () => {
@@ -22,24 +22,22 @@ const SearchBar = () => {
     const idYoutube = linkYoutube.slice(32, 43);
 
     // LLamar api youtube con id y apikey
-    const options = {
-      method: "GET",
-      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${idYoutube}&key=${process.env.REACT_APP_YOUTUBE_KEY}`,
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    };
+    // const options = {
+    //   method: "GET",
+    //   url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${idYoutube}&key=${process.env.REACT_APP_YOUTUBE_KEY}`,
+    //   headers: {
+    //     "Content-Type": "application/json; charset=UTF-8",
+    //   },
+    // };
 
-    await axios
-      .request(options)
-      .then((response) => (respuesta = response.data.items[0]))
-      .catch((err) => console.error(error));
+    // await axios
+    //   .request(options)
+    //   .then((response) => (respuesta = response.data.items[0].snippet))
+    //   .catch((err) => console.error(error));
 
-    console.log(respuesta);
+    // console.log(respuesta);
 
-    // const { items } = respuesta;
-
-    // // Petición POST de objeto con: url, fecha formateada, titulo e imagen
+    // Petición POST de objeto con: url, fecha formateada, titulo e imagen
     // const urlPost = "https://busca-canciones.herokuapp.com/agregar-cancion";
 
     // const InfoObj = {
