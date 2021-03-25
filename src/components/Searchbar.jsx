@@ -4,6 +4,7 @@ import axios from "axios";
 const SearchBar = () => {
   const [linkYoutube, setLinkYoutube] = useState("");
   const [error, setError] = useState(false);
+  const [exito, setExito] = useState(false);
 
   const handlingRequest = async (e) => {
     let respuesta;
@@ -22,72 +23,51 @@ const SearchBar = () => {
     const idYoutube = linkYoutube.slice(32, 43);
 
     // LLamar api youtube con id y apikey
-    // const options = {
-    //   method: "GET",
-    //   url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${idYoutube}&key=${process.env.REACT_APP_YOUTUBE_KEY}`,
-    //   headers: {
-    //     "Content-Type": "application/json; charset=UTF-8",
-    //   },
-    // };
+    const options = {
+      method: "GET",
+      url: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${idYoutube}&key=${process.env.REACT_APP_YOUTUBE_KEY}`,
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    };
 
-    // await axios
-    //   .request(options)
-    //   .then((response) => (respuesta = response.data.items[0].snippet))
-    //   .catch((err) => console.error(error));
+    await axios
+      .request(options)
+      .then((response) => (respuesta = response.data.items[0]))
+      .catch((err) => console.error(error));
 
-    // console.log(respuesta);
+    // Petición POST de objeto con: url, fecha, titulo e imagen
+    const urlPost = "http://localhost:8888/.netlify/functions/insertNewSong";
 
-    // Petición POST de objeto con: url, fecha formateada, titulo e imagen
-    // const urlPost = "https://busca-canciones.herokuapp.com/agregar-cancion";
+    await axios.post(urlPost, {
+      id_youtube: idYoutube,
+      url: linkYoutube,
+      fecha: parseFloat(Date.now()), // formatear fecha
+      title: respuesta.snippet.title,
+      description: respuesta.snippet.description,
+      tags: `${respuesta.snippet.tags[0]}, ${respuesta.snippet.tags[1]}, ${respuesta.snippet.tags[3]}`,
+      image: respuesta.snippet.thumbnails.standard.url,
+      enlace: "",
+    });
 
-    // const InfoObj = {
-    //   idYoutube: idYoutube,
-    //   url: inputSong,
-    //   fecha: parseFloat(Date.now()),
-    //   title: items[0].snippet.title,
-    //   image: items[0].snippet.thumbnails.high.url,
-    //   enlace: "",
-    // };
+    setExito(true);
 
-    // fetch(urlPost, {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   credentials: "include",
-    //   body: JSON.stringify(InfoObj),
-    // });
+    setTimeout(() => {
+      setExito(false);
+    }, 3000);
 
-    // setExito(true);
-
-    // setTimeout(() => {
-    //   setExito(false);
-    // }, 3000);
+    // Reseteamos form y estado
+    setLinkYoutube("");
+    // document.getElementById("input").reset();
 
     // // Cambia el estado para renderizar la nueva canción añadida
     // setUrlInput(inputSong);
-
-    // /* Reseteamos form y estado */
-    // setInputSong("");
-    // document.getElementById("enviar-form").reset();
   };
-
-  // useEffect(() => {
-  //   const gettingSongs = () => {
-  //     const url = "https://busca-canciones.herokuapp.com/canciones";
-
-  //     fetch(url)
-  //       .then((response) => response.json())
-  //       .then((resultado) => setSongs(resultado));
-  //   };
-
-  //   gettingSongs();
-  // }, [setSongs, error, exito]);
 
   return (
     <section className="flex items-end">
       <input
+        id="input"
         autoFocus
         className="w-10/12 h-11 block mt-6 ml-4 py-2 px-4 rounded-sm outline-none text-xl text-gray-700"
         type="text"
