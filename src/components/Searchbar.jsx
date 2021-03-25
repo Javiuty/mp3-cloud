@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Error from "./Error";
 
-const SearchBar = () => {
-  const [linkYoutube, setLinkYoutube] = useState("");
+const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
 

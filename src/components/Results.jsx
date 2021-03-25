@@ -2,7 +2,7 @@ import Result from "./Result";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Results = () => {
+const Results = ({ linkYoutube }) => {
   const [canciones, setCanciones] = useState([]);
 
   const fetchSongs = async () => {
@@ -15,7 +15,7 @@ const Results = () => {
 
   useEffect(() => {
     fetchSongs();
-  }, []);
+  }, [linkYoutube]);
 
   return (
     <section className="bg-white min-h-80 m-4 mt-16 relative border-t border-r border-l border-b">
