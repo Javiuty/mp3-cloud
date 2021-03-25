@@ -7,7 +7,7 @@ const mysql = require("serverless-mysql")({
   },
 });
 exports.handler = async function (event, context, callback) {
-  let results = await mysql.query("SELECT * FROM Canciones");
+  let results = await mysql.query("SELECT * FROM `Canciones` ORDER BY id DESC");
   await mysql.end();
   try {
     return {

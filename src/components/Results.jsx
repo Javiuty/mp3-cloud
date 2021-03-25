@@ -18,7 +18,7 @@ const Results = () => {
   }, []);
 
   return (
-    <section className="bg-white min-h-80 m-4 mt-14 relative border-t border-r border-l border-b">
+    <section className="bg-white min-h-80 m-4 mt-16 relative border-t border-r border-l border-b">
       <div className="flex">
         <div className="absolute -top-10 -left-1px p-2 px-4 bg-white rounded-sm border-l border-t border-r">
           <h2 className="cursor-pointer">Todos los resultados</h2>

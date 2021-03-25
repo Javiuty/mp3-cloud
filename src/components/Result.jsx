@@ -1,5 +1,5 @@
 const Result = ({ cancion }) => {
-  const { enlace, fecha, id, image, title, url } = cancion;
+  const { enlace, fecha, id, image, title, description, tags, url } = cancion;
 
   return (
     <article className="flex border-b w-full">
@@ -25,7 +25,7 @@ const Result = ({ cancion }) => {
         </div>
         <div>
           <h2 className="font-bold">{title}</h2>
-          <p>{title ? title : "No hay descripción del vídeo"}</p>
+          <p>{description ? description : "No hay descripción del vídeo"}</p>
         </div>
         <div className="flex items-center">
           <svg
