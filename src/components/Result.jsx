@@ -64,9 +64,9 @@ const Result = ({ cancion }) => {
             <span className="italic ml-1">{separateTags(tags)}</span>
           </p>
         </div>
-        <div>
-          <ul className="flex">
-            <li className="flex">
+        <div className="mt-2">
+          <ul className="flex items-center">
+            <li className="flex mr-2">
               <svg
                 className="w-6 h-6"
                 fill="none"

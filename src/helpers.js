@@ -7,5 +7,5 @@ export function shortString(string) {
 }
 
 export function separateTags(tags) {
-  console.log(tags);
+  return tags.split(",").join(" | ");
 }
