@@ -1,9 +1,23 @@
 const Result = ({ cancion }) => {
-  const { enlace, fecha, id, image, title, description, tags, url } = cancion;
+  const {
+    enlace,
+    fecha,
+    id,
+    image,
+    title,
+    description,
+    tags,
+    url,
+    views,
+    favoritos,
+  } = cancion;
 
   return (
-    <article className="flex border-b w-full">
+    <article className="grid border-b w-full">
       <div>
+        <img className="w-44 h-auto p-4" src={image} alt={title} />
+      </div>
+      {/* <div>
         <img className="w-56 h-36 p-6 rounded-sm" src={image} alt={title} />
       </div>
       <div className="grid grid-template-result">
@@ -43,7 +57,7 @@ const Result = ({ cancion }) => {
             ></path>
           </svg>
         </div>
-      </div>
+      </div> */}
     </article>
   );
 };

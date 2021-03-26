@@ -8,6 +8,7 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
 
   const handlingRequest = async (e) => {
     let respuesta;
+    let stats;
 
     if (
       linkYoutube === "" ||
@@ -30,11 +31,21 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
         "Content-Type": "application/json; charset=UTF-8",
       },
     };
-
+    // Get video from youtube
     await axios
       .request(options)
       .then((response) => (respuesta = response.data.items[0]))
       .catch((err) => console.error(error));
+
+    // Get statics
+    const urlStats = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics&id=${idYoutube}&key=${process.env.REACT_APP_YOUTUBE_KEY}`;
+
+    await axios
+      .get(urlStats)
+      .then((response) => (stats = response.data.items[0].statistics));
+
+    const { likeCount, viewCount } = stats;
+    const { snippet } = respuesta;
 
     // Petición POST de objeto con: url, fecha, titulo e imagen
     const urlPost = "http://localhost:8888/.netlify/functions/insertNewSong";
@@ -43,11 +54,16 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
       id_youtube: idYoutube,
       url: linkYoutube,
       fecha: parseFloat(Date.now()), // formatear fecha
-      title: respuesta.snippet.title,
-      description: respuesta.snippet.description,
-      tags: `${respuesta.snippet.tags[0]}, ${respuesta.snippet.tags[1]}, ${respuesta.snippet.tags[3]}`,
-      image: respuesta.snippet.thumbnails.standard.url,
+      title: snippet.title,
+      description: snippet.description,
+      tags: `${snippet.tags[0]}, ${snippet.tags[1]}, ${snippet.tags[3]}`,
+      image:
+        snippet.thumbnails.high.url ||
+        snippet.thumbnails.medium.url ||
+        snippet.thumbnails.default.url,
       enlace: "",
+      views: viewCount,
+      favoritos: likeCount,
     });
 
     setExito(true);
@@ -59,9 +75,6 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
     // Reseteamos form y estado
     setLinkYoutube("");
     document.getElementById("input").value = null;
-
-    // // Cambia el estado para renderizar la nueva canción añadida
-    // setUrlInput(inputSong);
   };
 
   return (
