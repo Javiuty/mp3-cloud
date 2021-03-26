@@ -27,3 +27,9 @@ button {
 .color-primary-bg {
   background-color: #00bcf0;
 }
+
+.centered-end {
+  position: absolute;
+  top: 40%;
+  right: 2%;
+}
