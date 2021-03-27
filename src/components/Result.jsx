@@ -1,4 +1,5 @@
 import { shortString, separateTags } from "../helpers";
+import moment from "moment";
 
 const Result = ({ cancion }) => {
   const {
@@ -15,7 +16,7 @@ const Result = ({ cancion }) => {
   } = cancion;
 
   return (
-    <article className="flex border-b w-full relative">
+    <article className="flex border-b w-full relative hover:bg-gray-100 cursor-pointer transition-all duration-200">
       <div>
         <img className="w-44 h-auto p-4" src={image} alt={title} />
       </div>
@@ -35,20 +36,44 @@ const Result = ({ cancion }) => {
             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
           ></path>
         </svg>
-        <svg
-          className="w-6 h-6 cursor-pointer"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-          ></path>
-        </svg>
+        {enlace ? (
+          <a
+            href={enlace}
+            disabled={true}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke={enlace ? "green" : "red"}
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+              ></path>
+            </svg>
+          </a>
+        ) : (
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke={enlace ? "green" : "red"}
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+            ></path>
+          </svg>
+        )}
       </div>
 
       <div>
@@ -111,6 +136,9 @@ const Result = ({ cancion }) => {
                 ></path>
               </svg>
               {favoritos}
+            </li>
+            <li className="ml-4 text-sm text-gray-400">
+              Añadido: <span>{moment().startOf("day").fromNow()}</span>
             </li>
           </ul>
         </div>
