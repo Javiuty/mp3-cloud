@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@astrajs/collections": "^0.0.12",
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -11,14 +10,16 @@
     "axios": "^0.21.1",
     "date-fns": "^1.30.1",
     "dotenv": "^8.2.0",
+    "ffmpeg.js": "^4.2.9003",
+    "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.29.1",
-    "mongodb": "^3.6.5",
     "mysql": "^2.18.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
     "serverless-mysql": "^1.5.4",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "ytdl": "^1.4.1"
   },
   "scripts": {
     "start": "craco start",

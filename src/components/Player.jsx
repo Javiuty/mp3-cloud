@@ -1,5 +1,11 @@
 const Player = () => {
-  return <article className="w-full">esto es Player</article>;
+  return (
+    <article className="w-full">
+      <video className="w-full" controls>
+        <source src="" />
+      </video>
+    </article>
+  );
 };
 
 export default Player;

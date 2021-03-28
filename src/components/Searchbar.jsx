@@ -56,7 +56,9 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
       fecha: parseFloat(Date.now()), // formatear fecha
       title: snippet.title,
       description: snippet.description,
-      tags: `${snippet.tags[0]}, ${snippet.tags[1]}, ${snippet.tags[3]}`,
+      tags: snippet.tags
+        ? `${snippet.tags[0]}, ${snippet.tags[1]}, ${snippet.tags[3]}`
+        : "Este vídeo no tiene etiquetas",
       image:
         snippet.thumbnails.high.url ||
         snippet.thumbnails.medium.url ||
@@ -65,6 +67,14 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
       views: viewCount,
       favoritos: likeCount,
     });
+
+    const urlDownloadMp3 = "http://localhost:8888/.netlify/functions/download";
+
+    await axios.post(urlDownloadMp3, {
+      url: linkYoutube,
+      title: snippet.title,
+    });
+    // http://www.youtube.com/watch?v=_HSylqgVYQI | ffmpeg -i pipe:0 -b:a 192K -vn myfile.mp3
 
     setExito(true);
 

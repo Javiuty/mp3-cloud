@@ -9,14 +9,14 @@ const mysql = require("serverless-mysql")({
 exports.handler = async function (event, context, callback) {
   const requestBody = JSON.parse(event.body);
 
-  const results = await mysql.query("INSERT INTO Canciones SET ?", requestBody);
+  await mysql.query("INSERT INTO Canciones SET ?", requestBody);
 
   await mysql.end();
 
   try {
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Enviado con éxito" }),
+      body: JSON.stringify(requestBody),
     };
   } catch (error) {
     console.log(error);

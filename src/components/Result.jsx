@@ -1,5 +1,6 @@
 import { shortString, separateTags } from "../helpers";
 import moment from "moment";
+import { useState } from "react";
 
 const Result = ({ cancion }) => {
   const {
@@ -15,6 +16,14 @@ const Result = ({ cancion }) => {
     favoritos,
   } = cancion;
 
+  const [like, setLike] = useState(false);
+
+  const handleLike = () => {
+    like ? setLike(false) : setLike(true);
+  };
+
+  // https://ytmp3.cc/youtube-to-mp3/
+
   return (
     <article className="flex border-b w-full relative hover:bg-gray-100 cursor-pointer transition-all duration-200">
       <div>
@@ -23,11 +32,12 @@ const Result = ({ cancion }) => {
 
       <div className="flex flex-col justify-center pr-4">
         <svg
-          className="w-6 h-6 mb-8 cursor-not-allowed"
-          fill="none"
+          className="w-6 h-6 mb-8"
+          fill={like ? "red" : "none"}
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
+          onClick={handleLike}
         >
           <path
             strokeLinecap="round"
@@ -39,14 +49,13 @@ const Result = ({ cancion }) => {
         {enlace ? (
           <a
             href={enlace}
-            disabled={true}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer cursor pointer"
           >
             <svg
               className="w-6 h-6"
               fill="none"
-              stroke={enlace ? "green" : "red"}
+              stroke="green"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -60,9 +69,9 @@ const Result = ({ cancion }) => {
           </a>
         ) : (
           <svg
-            className="w-6 h-6"
+            className="w-6 h-6 cursor-not-allowed"
             fill="none"
-            stroke={enlace ? "green" : "red"}
+            stroke="red"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -138,7 +147,7 @@ const Result = ({ cancion }) => {
               {favoritos}
             </li>
             <li className="ml-4 text-sm text-gray-400">
-              Añadido: <span>{moment().startOf("day").fromNow()}</span>
+              {/* Añadido: <span>{moment().startOf("day").fromNow()}</span> */}
             </li>
           </ul>
         </div>
