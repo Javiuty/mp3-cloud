@@ -3,7 +3,7 @@ import { shortString, separateTags } from "../helpers";
 import { useState } from "react";
 import axios from "axios";
 
-const Result = ({ cancion }) => {
+const Result = ({ cancion, setIdSong }) => {
   const {
     enlace,
     // fecha,
@@ -31,6 +31,8 @@ const Result = ({ cancion }) => {
     };
 
     await axios.delete(url, { data });
+
+    setIdSong(idSong);
   };
 
   // https://ytmp3.cc/youtube-to-mp3/

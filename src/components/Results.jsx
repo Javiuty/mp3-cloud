@@ -2,7 +2,13 @@ import Result from "./Result";
 import axios from "axios";
 import { useEffect } from "react";
 
-const Results = ({ linkYoutube, canciones, setCanciones }) => {
+const Results = ({
+  linkYoutube,
+  canciones,
+  idSong,
+  setIdSong,
+  setCanciones,
+}) => {
   const fetchSongs = async () => {
     const url = "http://localhost:8888/.netlify/functions/getSongs";
 
@@ -14,7 +20,7 @@ const Results = ({ linkYoutube, canciones, setCanciones }) => {
   useEffect(() => {
     fetchSongs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [linkYoutube]);
+  }, [linkYoutube, idSong]);
 
   return (
     <section className="bg-white min-h-80 m-4 mt-16 relative border-t border-r border-l border-b">
@@ -36,7 +42,7 @@ const Results = ({ linkYoutube, canciones, setCanciones }) => {
         <span className="cursor-pointer">Fecha de Creación</span>{" "}
       </h3> */}
       {canciones.map((cancion, index) => (
-        <Result key={index} cancion={cancion} />
+        <Result key={index} cancion={cancion} setIdSong={setIdSong} />
       ))}
     </section>
   );

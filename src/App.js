@@ -9,6 +9,7 @@ const App = () => {
   const [canciones, setCanciones] = useState([]);
   const [linkYoutube, setLinkYoutube] = useState("");
   const [idCancionYoutube, setIdCancionYoutube] = useState("");
+  const [idSong, setIdSong] = useState("");
 
   return (
     <main className="grid grid-template-1fr-1fr-2fr">
@@ -27,6 +28,8 @@ const App = () => {
           linkYoutube={linkYoutube}
           canciones={canciones}
           setCanciones={setCanciones}
+          idSong={idSong}
+          setIdSong={setIdSong}
         />
       </section>
     </main>
