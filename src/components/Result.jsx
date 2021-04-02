@@ -1,6 +1,7 @@
 import { shortString, separateTags } from "../helpers";
 // import moment from "moment";
 import { useState } from "react";
+import axios from "axios";
 
 const Result = ({ cancion }) => {
   const {
@@ -22,6 +23,16 @@ const Result = ({ cancion }) => {
     like ? setLike(false) : setLike(true);
   };
 
+  const deleteSong = async (idSong) => {
+    const url = "http://localhost:8888/.netlify/functions/deleteSong";
+
+    const data = {
+      id: idSong,
+    };
+
+    await axios.delete(url, { data });
+  };
+
   // https://ytmp3.cc/youtube-to-mp3/
 
   return (
@@ -29,7 +40,7 @@ const Result = ({ cancion }) => {
       <p
         className="delete-btn absolute right-6 -top-6 text-4xl text-red-600 opacity-0 font-bold"
         id={id}
-        onClick={() => console.log("Eliminando cancion...", id)}
+        onClick={() => deleteSong(id)}
       >
         &times;
       </p>
