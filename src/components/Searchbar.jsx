@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Error from "./Error";
 
-const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
+const SearchBar = ({ linkYoutube, setLinkYoutube, setIdCancionYoutube }) => {
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
 
@@ -22,6 +22,7 @@ const SearchBar = ({ linkYoutube, setLinkYoutube }) => {
 
     // Conseguir id_yotube desde la url
     const idYoutube = linkYoutube.slice(32, 43);
+    setIdCancionYoutube(idYoutube);
 
     // LLamar api youtube con id y apikey
     const options = {

@@ -1,14 +1,11 @@
 import ReactPlayer from "react-player";
 
-const Player = () => {
+const Player = ({ canciones }) => {
+  if (!canciones.length > 0) return null;
+
   return (
     <article className="w-full">
-      <ReactPlayer
-        className="react-player"
-        url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-        width="100%"
-        controls="true"
-      />
+      <ReactPlayer className="react-player" />
     </article>
   );
 };

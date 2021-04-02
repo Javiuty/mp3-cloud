@@ -1,10 +1,8 @@
 import Result from "./Result";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const Results = ({ linkYoutube }) => {
-  const [canciones, setCanciones] = useState([]);
-
+const Results = ({ linkYoutube, canciones, setCanciones }) => {
   const fetchSongs = async () => {
     const url = "http://localhost:8888/.netlify/functions/getSongs";
 
@@ -15,6 +13,7 @@ const Results = ({ linkYoutube }) => {
 
   useEffect(() => {
     fetchSongs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [linkYoutube]);
 
   return (
