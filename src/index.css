@@ -16,6 +16,10 @@ button {
   grid-template-columns: 1fr 8fr 1fr;
 }
 
+.grid-template-rows-1fr-2fr {
+  grid-template-rows: 1fr 1fr;
+}
+
 .-left-1px {
   left: -1px;
 }

@@ -14,9 +14,9 @@ const App = () => {
   return (
     <main className="grid grid-template-1fr-1fr-2fr">
       <Sidebar />
-      <section className="flex flex-col bg-white">
+      <section className="grid grid-template-rows-1fr-2fr bg-white">
         <Player canciones={canciones} />
-        {/* <NextSongs idCancionYoutube={idCancionYoutube} canciones={canciones} /> */}
+        <NextSongs idCancionYoutube={idCancionYoutube} canciones={canciones} />
       </section>
       <section className="flex flex-col bg-gray-100">
         <Searchbar
