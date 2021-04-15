@@ -3,7 +3,7 @@ import FotoProfile from "../assets/foto-profile.jpg";
 
 const Sidebar = () => {
   return (
-    <section className="bg-gray-100 h-screen">
+    <section style={{ width: "21%" }} className="bg-gray-100 h-screen">
       <div className="flex justify-center items-center bg-white m-4 mt-6 rounded-sm">
         <img className="py-2 w-12" src={Logo} alt="Logo" />
       </div>

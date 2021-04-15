@@ -3,7 +3,7 @@ import { shortString, separateTags } from "../helpers";
 import { useState } from "react";
 import axios from "axios";
 
-const Result = ({ cancion, setIdSong }) => {
+const Result = ({ cancion, setIdSong, setSelectImageSong, fetchSongs }) => {
   const {
     enlace,
     // fecha,
@@ -31,14 +31,17 @@ const Result = ({ cancion, setIdSong }) => {
     };
 
     await axios.delete(url, { data });
-
-    setIdSong(idSong);
+    fetchSongs();
   };
 
   // https://ytmp3.cc/youtube-to-mp3/
 
   return (
-    <article className="flex border-b w-full relative container-song hover:bg-gray-100 cursor-pointer transition-all duration-300">
+    <article
+      id={id}
+      className="flex border-b w-full relative container-song hover:bg-gray-100 cursor-pointer transition-all duration-300"
+      onClick={() => setSelectImageSong(id)}
+    >
       <p
         className="delete-btn absolute right-6 -top-6 text-4xl text-red-600 opacity-0 font-bold"
         id={id}

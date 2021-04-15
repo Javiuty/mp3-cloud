@@ -2,7 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import Error from "./Error";
 
-const SearchBar = ({ linkYoutube, setLinkYoutube, setIdCancionYoutube }) => {
+const SearchBar = ({
+  linkYoutube,
+  setLinkYoutube,
+  setIdCancionYoutube,
+  fetchSongs,
+}) => {
   const [error, setError] = useState(false);
   const [exito, setExito] = useState(false);
 
@@ -86,6 +91,8 @@ const SearchBar = ({ linkYoutube, setLinkYoutube, setIdCancionYoutube }) => {
     // Reseteamos form y estado
     setLinkYoutube("");
     document.getElementById("input").value = null;
+
+    fetchSongs();
   };
 
   return (
@@ -119,8 +126,10 @@ const SearchBar = ({ linkYoutube, setLinkYoutube, setIdCancionYoutube }) => {
           </svg>
         </button>
       </section>
-      {exito ? <Error type="exito" message="Link enviado con éxito" /> : null}
-      {error ? <Error type="error" message="No es un enlace válido" /> : null}
+      <div className="h-11 bg-gray-400">
+        {exito ? <Error type="exito" message="Link enviado con éxito" /> : null}
+        {error ? <Error type="error" message="No es un enlace válido" /> : null}
+      </div>
     </>
   );
 };

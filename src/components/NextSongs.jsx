@@ -24,7 +24,7 @@ const NextSongs = ({ idCancionYoutube, canciones }) => {
   }, [canciones.length]);
 
   return (
-    <article className="border-t-8">
+    <article style={{ height: "34%" }} className="border-t-8 w-full">
       <h2 className="px-4 py-4">Canciones Recomendadas</h2>
       {/* {relatedSongs.map((cancion, index) => (
         <NextSong key={index} cancion={cancion} />
