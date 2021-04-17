@@ -5,6 +5,7 @@ import Searchbar from "./components/Searchbar";
 import Results from "./components/Results";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Base from "./components/popup/Base";
 
 const App = () => {
   const [canciones, setCanciones] = useState([]);
@@ -25,28 +26,34 @@ const App = () => {
   }, []);
 
   return (
-    <main className="flex">
-      <Sidebar />
-      <section style={{ width: "22%" }} className="flex flex-col bg-white">
-        <Player canciones={canciones} selectImageSong={selectImageSong} />
-        <NextSongs idCancionYoutube={idCancionYoutube} canciones={canciones} />
-      </section>
-      <section style={{ width: "57%" }} className="flex flex-col bg-gray-100">
-        <Searchbar
-          linkYoutube={linkYoutube}
-          setLinkYoutube={setLinkYoutube}
-          setIdCancionYoutube={setIdCancionYoutube}
-          fetchSongs={fetchSongs}
-        />
-        <Results
-          linkYoutube={linkYoutube}
-          canciones={canciones}
-          setCanciones={setCanciones}
-          setSelectImageSong={setSelectImageSong}
-          fetchSongs={fetchSongs}
-        />
-      </section>
-    </main>
+    <>
+      <Base title="" />
+      <main className="flex">
+        <Sidebar />
+        <section style={{ width: "22%" }} className="flex flex-col bg-white">
+          <Player canciones={canciones} selectImageSong={selectImageSong} />
+          <NextSongs
+            idCancionYoutube={idCancionYoutube}
+            canciones={canciones}
+          />
+        </section>
+        <section style={{ width: "57%" }} className="flex flex-col bg-gray-100">
+          <Searchbar
+            linkYoutube={linkYoutube}
+            setLinkYoutube={setLinkYoutube}
+            setIdCancionYoutube={setIdCancionYoutube}
+            fetchSongs={fetchSongs}
+          />
+          <Results
+            linkYoutube={linkYoutube}
+            canciones={canciones}
+            setCanciones={setCanciones}
+            setSelectImageSong={setSelectImageSong}
+            fetchSongs={fetchSongs}
+          />
+        </section>
+      </main>
+    </>
   );
 };
 
