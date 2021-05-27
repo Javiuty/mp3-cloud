@@ -30,7 +30,10 @@ const Result = ({ cancion, setIdSong, setSelectImageSong, fetchSongs }) => {
       id: idSong,
     };
 
-    await axios.delete(url, { data });
+    await axios
+      .delete(url, { data })
+      .then((obj) => console.log(obj))
+      .catch((err) => console.log(err));
     fetchSongs();
   };
 

@@ -9,13 +9,7 @@ const mysql = require("serverless-mysql")({
 exports.handler = async function (event, context, callback) {
   const requestBody = JSON.parse(event.body);
 
-  let results = await mysql.query(
-    "DELETE FROM Canciones WHERE id = ?",
-    requestBody.id
-  );
-
-  console.log("Esto es requestBody", requestBody.id);
-  console.log("Esto es results", results);
+  await mysql.query("DELETE FROM Canciones WHERE id = ?", requestBody.id);
 
   await mysql.end();
 

@@ -16,9 +16,12 @@ exports.handler = async function (event, context, callback) {
   try {
     return {
       statusCode: 200,
-      body: JSON.stringify(requestBody),
+      body: JSON.stringify({ message: "Canción añadida correctamente " }),
     };
   } catch (error) {
     console.log(error);
+    return {
+      body: JSON.stringify({ message: error }),
+    };
   }
 };

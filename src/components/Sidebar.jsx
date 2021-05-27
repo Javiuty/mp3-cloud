@@ -8,7 +8,7 @@ const Sidebar = () => {
         <img className="py-2 w-12" src={Logo} alt="Logo" />
       </div>
       <article>
-        <h2 className="px-8">Mi App</h2>
+        <h2 className="px-8 font-bold">Mi App</h2>
         <div className="flex flex-col">
           <div className="flex px-8 py-2">
             <svg
@@ -51,7 +51,7 @@ const Sidebar = () => {
       </article>
 
       <article>
-        <h2 className="px-8">Cuenta</h2>
+        <h2 className="px-8 font-bold">Cuenta</h2>
 
         <div className="flex px-8 py-2">
           <img
@@ -83,7 +83,7 @@ const Sidebar = () => {
         <hr className="w-9/12 m-auto my-8" />
       </article>
       <article>
-        <h2 className="px-8 ">Lista de Reprodución</h2>
+        <h2 className="px-8 font-bold">Lista de Reprodución</h2>
         <div className="flex px-8 py-2">
           <svg
             className="w-6 h-6"

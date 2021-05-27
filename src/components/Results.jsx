@@ -1,14 +1,6 @@
 import Result from "./Result";
 
-const Results = ({
-  linkYoutube,
-  canciones,
-  idSong,
-  setIdSong,
-  setCanciones,
-  setSelectImageSong,
-  fetchSongs,
-}) => {
+const Results = ({ canciones, setIdSong, setSelectImageSong, fetchSongs }) => {
   return (
     <section className="bg-white min-h-80 m-4 mt-16 relative border-t border-r border-l border-b">
       <div className="flex">
@@ -37,6 +29,24 @@ const Results = ({
           fetchSongs={fetchSongs}
         />
       ))}
+      <div className="flex justify-center p-4">
+        {canciones.length !== 0 && (
+          <>
+            <button
+              className="flex items-center  rounded-3xl text-white color-primary-bg py-2 px-4 font-bold mr-12 hover:opacity-80 transition-all transition-duration-200"
+              onClick={() => fetchSongs("resta")}
+            >
+              &larr; Anterior
+            </button>
+            <button
+              className="flex items-center rounded-3xl text-white color-primary-bg py-2 px-4 font-bold hover:opacity-80 transition-all transition-duration-200"
+              onClick={() => fetchSongs("suma")}
+            >
+              Siguiente &rarr;
+            </button>
+          </>
+        )}
+      </div>
     </section>
   );
 };
